@@ -1,0 +1,19 @@
+{
+  "name": "mongodb-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "build": "./node_modules/.bin/netlify-lambda build src"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.11",
+    "netlify-lambda": "^2.0.15",
+    "serverless-http": "^3.0.1"
+  }
+}
