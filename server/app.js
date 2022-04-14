@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-mongoose.connect('mongodb+srv://mongoDbMemoryGame:E7eHdZQTBAcPtj9e@memorygame.3pivf.mongodb.net/MemoryGame?retryWrites=true&w=majority');
+mongoose.connect('Your Connection MongoDB');
 
 mongoose.connection.on("connected", function () {
   console.log("Connected to Database");

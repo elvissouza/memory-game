@@ -3,7 +3,6 @@ import store from '../store';
 export const userService = {
   login,
   logout,
-  getName,
 };
 
 function login(name) {
@@ -18,6 +17,3 @@ function logout() {
   return this.$router.push('/login');
 }
 
-function getName() {
-  return localStorage.getItem('playerName');
-}
