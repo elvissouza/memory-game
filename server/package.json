@@ -1,15 +1,13 @@
 {
   "name": "mongodb-server",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
     "test": "echo \"Dont have anything\" && exit 1"
   },
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.20.0",
-    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mongoose": "^6.2.11"
   }

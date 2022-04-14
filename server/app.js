@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-require('dotenv').config();
 
-mongoose.connect('Your Connection MongoDB');
+mongoose.connect('mongodb+srv://mongoDbMemoryGame:E7eHdZQTBAcPtj9e@memorygame.3pivf.mongodb.net/MemoryGame?retryWrites=true&w=majority');
 
 mongoose.connection.on("connected", function () {
   console.log("Connected to Database");
@@ -30,6 +29,6 @@ app.use(function (err, req, res, next) {
 });
 
 let port = 5000;
-app.listen(process.env.PORT || port, () => {
+app.listen(process.env.port || port, () => {
   console.log('Server host on port: ' + port);
 });
