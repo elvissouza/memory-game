@@ -31,6 +31,7 @@ async function addPlayer(player) {
     });
 }
 
-function finishGame(finished) {
+async function finishGame(finished) {
+  await getPlayers();
   return store.commit('UPDATE_FINISHGAME', finished);
 }

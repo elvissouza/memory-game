@@ -51,8 +51,17 @@ export default {
       ranking: [],
     };
   },
+  watch: {
+    '$store.state.finish': {
+      handler() {
+        this.getPlayer();
+      },
+      deep: true,
+    },
+  },
   methods: {
     async getPlayer() {
+      this.ranking = [];
       let result = await playerService.getPlayers();
       result.map((pl) => {
         this.ranking.push({
