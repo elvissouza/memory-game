@@ -1,5 +1,7 @@
 <template>
   <v-main class="pa-0">
+    <AlertFinish :rounds="rounds" />
+
     <TopDeck :rounds="rounds" :resetGame="resetGame" />
 
     <v-row class="no-gutters justify-center align-center">
@@ -40,16 +42,20 @@
 <script>
 import Vue from 'vue';
 import TopDeck from './TopDeck.vue';
+import AlertFinish from '../../Notification/AlertFinish.vue';
+
+import { playerService } from '../../../services/_player';
 
 export default {
   name: 'BodyDeck',
-  components: { TopDeck },
+  components: { TopDeck, AlertFinish },
   data() {
     return {
       cardsData: [],
       flipCardData: [],
       currentValue: null,
       rounds: 0,
+      finish: false,
     };
   },
   methods: {
@@ -65,6 +71,7 @@ export default {
             id: i,
             path: `/img/cat-${i}.png`,
             isInverted: false,
+            isMatched: false,
           });
         }
       }
@@ -87,6 +94,8 @@ export default {
         setTimeout(() => {
           this.flipCardData.forEach((card) => (card.isMatched = true));
           this.flipCardData = [];
+
+          this.finishGame();
         }, 400);
       } else {
         setTimeout(() => {
@@ -95,6 +104,18 @@ export default {
           });
           this.flipCardData = [];
         }, 800);
+      }
+    },
+    finishGame() {
+      let cards = this.cardsData;
+      if (cards.every((card) => card.isMatched === true)) {
+        this.finish = true;
+        playerService.finishGame(this.finish);
+        let playerFinish = {
+          name: localStorage.getItem('playerName'),
+          rounds: this.rounds,
+        };
+        playerService.addPlayer(playerFinish);
       }
     },
     resetGame() {
@@ -106,6 +127,8 @@ export default {
       setTimeout(() => {
         this.cardsData = this.cardsData.sort(() => Math.random() - 0.5);
         this.rounds = 0;
+        this.finish = false;
+        this.$store.commit('UPDATE_FINISHGAME', false);
         this.flipCardData = [];
       }, 600);
     },
