@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 mongoose.connect('mongodb+srv://mongoDbMemoryGame:E7eHdZQTBAcPtj9e@memorygame.3pivf.mongodb.net/MemoryGame?retryWrites=true&w=majority');
 
@@ -29,6 +30,6 @@ app.use(function (err, req, res, next) {
 });
 
 let port = 5000;
-app.listen(process.env.port || port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log('Server host on port: ' + port);
 });
