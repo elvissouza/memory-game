@@ -6,11 +6,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    playerName: ''
+    playerName: '',
+    finish: false
   },
   mutations: {
     UPDATE_PLAYERNAME(state, name) {
       state.playerName = name;
+    },
+    UPDATE_FINISHGAME(state, finish) {
+      state.finish = finish;
     }
   },
   actions: {
