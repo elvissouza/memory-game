@@ -8,12 +8,14 @@ export const userService = {
 
 function login(name) {
   store.commit('UPDATE_PLAYERNAME', name);
-  return localStorage.setItem('playerName', name);
+  localStorage.setItem('playerName', name);
+  return this.$router.push('/');
 }
 
 function logout() {
   store.commit('UPDATE_PLAYERNAME', null);
-  return localStorage.removeItem('playerName');
+  localStorage.removeItem('playerName');
+  return this.$router.push('/login');
 }
 
 function getName() {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import GameCard from '../components/Cards/GameCard';
+import GameCard from '../components/Cards/GameDeck/Deck';
 export default {
   components: { GameCard },
 };

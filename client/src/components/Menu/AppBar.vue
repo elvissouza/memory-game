@@ -36,9 +36,7 @@ export default {
   },
   methods: {
     async logout() {
-      let res = await userService.logout();
-      console.log(res);
-      return this.$router.push('/login');
+      return await userService.logout();
     },
   },
 };

@@ -44,9 +44,7 @@ export default {
   },
   methods: {
     async login(name) {
-      let res = await userService.login(name);
-      console.log(res);
-      return this.$router.push('/');
+      return await userService.login(name);
     },
   },
 };
