@@ -11,7 +11,6 @@ exports.getPlayers = function (req, res, next) {
 };
 
 exports.create = function (req, res, next) {
-  console.log("You made a POST request: ", req.body);
   modelPlayer.create(req.body).then(function (player) {
     res.send(player);
   }).catch(next);
