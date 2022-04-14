@@ -31,7 +31,8 @@
 </template>
 
 <script>
-import fakeRanking from './fakeRanking.json';
+// import fakeRanking from './fakeRanking.json';
+import { playerService } from '../../services/_player';
 
 export default {
   name: 'GridRanking',
@@ -43,12 +44,26 @@ export default {
           text: 'Player',
           align: 'start',
           sortable: false,
-          value: 'playerName',
+          value: 'name',
         },
         { text: 'Rounds', sortable: false, value: 'rounds' },
       ],
-      ranking: fakeRanking,
+      ranking: [],
     };
+  },
+  methods: {
+    async getPlayer() {
+      let result = await playerService.getPlayers();
+      result.map((pl) => {
+        this.ranking.push({
+          name: pl.name,
+          rounds: pl.rounds,
+        });
+      });
+    },
+  },
+  created() {
+    this.getPlayer();
   },
 };
 </script>
